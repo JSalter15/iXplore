@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapTableViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapTableViewController" customModule="iXplore" customModuleProvider="target">
             <connections>
+                <outlet property="mapView" destination="jqm-kB-j9u" id="kYs-8R-2Bw"/>
+                <outlet property="tableView" destination="nw9-Zp-CVx" id="5kX-qm-UgV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +16,26 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jqm-kB-j9u">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                </mapView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nw9-Zp-CVx">
+                    <rect key="frame" x="0.0" y="300" width="600" height="300"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="nw9-Zp-CVx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IxP-6g-hSF"/>
+                <constraint firstAttribute="trailing" secondItem="jqm-kB-j9u" secondAttribute="trailing" id="LZp-Dz-4XI"/>
+                <constraint firstItem="jqm-kB-j9u" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ob6-2k-zSi"/>
+                <constraint firstAttribute="trailing" secondItem="nw9-Zp-CVx" secondAttribute="trailing" id="aDF-Fa-YDI"/>
+                <constraint firstItem="jqm-kB-j9u" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bvW-OU-Rxq"/>
+                <constraint firstItem="nw9-Zp-CVx" firstAttribute="top" secondItem="jqm-kB-j9u" secondAttribute="bottom" id="iXg-4m-TCq"/>
+                <constraint firstItem="nw9-Zp-CVx" firstAttribute="height" secondItem="jqm-kB-j9u" secondAttribute="height" id="lgA-bs-mLk"/>
+                <constraint firstAttribute="bottom" secondItem="nw9-Zp-CVx" secondAttribute="bottom" id="psi-Tp-i8t"/>
+            </constraints>
         </view>
     </objects>
 </document>
