@@ -15,6 +15,7 @@ class Place: NSObject, MKAnnotation {
     var title: String?
     var logoURL: String?
     var ratable = false
+    var rating = 0
     
     class func placeList() -> [Place] {
         

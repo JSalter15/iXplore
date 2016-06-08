@@ -25,6 +25,7 @@ class SpotTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+    // Star tapped, update the 
     @IBAction func starTouched(sender: UIButton) {
         if sender == star1 {
             star1.setImage(UIImage(named: "star_pink"), forState: .Normal)

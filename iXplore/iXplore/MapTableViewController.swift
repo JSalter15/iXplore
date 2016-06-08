@@ -50,6 +50,9 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center:place.coordinate, span:span)
         mapView.setRegion(region, animated: true)
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        mapView.selectAnnotation(place, animated: true)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
