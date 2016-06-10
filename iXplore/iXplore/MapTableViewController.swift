@@ -13,7 +13,8 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
-
+    
+    
     var placeList:[Place]?
     
     override func viewDidLoad() {

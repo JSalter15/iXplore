@@ -15,38 +15,45 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ke1-Oi-Rte">
-                        <rect key="frame" x="96" y="29" width="50" height="50"/>
+                        <rect key="frame" x="96" y="37" width="40" height="40"/>
                         <state key="normal" image="star_black.png"/>
                         <connections>
                             <action selector="starTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4s6-Yc-Bm3"/>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8Q-pi-X6W">
-                        <rect key="frame" x="149" y="29" width="50" height="50"/>
+                        <rect key="frame" x="140" y="37" width="40" height="40"/>
                         <state key="normal" image="star_black.png"/>
                         <connections>
                             <action selector="starTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="a53-eN-pvk"/>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7Q-hb-NYz">
-                        <rect key="frame" x="203" y="29" width="50" height="50"/>
+                        <rect key="frame" x="184" y="37" width="40" height="40"/>
                         <state key="normal" image="star_black.png"/>
                         <connections>
                             <action selector="starTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Quu-NC-p1X"/>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWw-3w-Rhp">
-                        <rect key="frame" x="257" y="29" width="50" height="50"/>
+                        <rect key="frame" x="228" y="37" width="40" height="40"/>
                         <state key="normal" image="star_black.png"/>
                         <connections>
                             <action selector="starTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rx8-Pq-7VL"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQz-NY-YsJ">
+                        <rect key="frame" x="271" y="37" width="40" height="40"/>
+                        <state key="normal" image="star_black.png"/>
+                        <connections>
+                            <action selector="starTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ZYN-WG-kuA"/>
                         </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fdR-26-gk6">
                         <rect key="frame" x="0.0" y="0.0" width="88" height="88"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSS-Kw-9EW">
-                        <rect key="frame" x="96" y="8" width="221" height="27"/>
+                        <rect key="frame" x="96" y="11" width="221" height="27"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -60,6 +67,7 @@
                 <outlet property="star2" destination="V8Q-pi-X6W" id="ttX-Kr-F27"/>
                 <outlet property="star3" destination="f7Q-hb-NYz" id="yO7-en-EAh"/>
                 <outlet property="star4" destination="BWw-3w-Rhp" id="Un4-s9-8DI"/>
+                <outlet property="star5" destination="FQz-NY-YsJ" id="VnW-Fe-ilu"/>
             </connections>
         </tableViewCell>
     </objects>
