@@ -9,68 +9,16 @@
 import UIKit
 
 class SpotTableViewCell: UITableViewCell {
-
-    
-    
+  
     @IBOutlet weak var cellImage: UIImageView!
-    @IBOutlet weak var label: UILabel!
-    
-    @IBOutlet weak var star1: UIButton!
-    @IBOutlet weak var star2: UIButton!
-    @IBOutlet weak var star3: UIButton!
-    @IBOutlet weak var star4: UIButton!
-    @IBOutlet weak var star5: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    // Star tapped, update the
-    @IBAction func starTouched(sender: UIButton) {
-        if sender == star1 {
-            star1.setImage(UIImage(named: "star_pink"), forState: .Normal)
-            star2.setImage(UIImage(named: "star_black"), forState: .Normal)
-            star3.setImage(UIImage(named: "star_black"), forState: .Normal)
-            star4.setImage(UIImage(named: "star_black"), forState: .Normal)
-            star5.setImage(UIImage(named: "star_black"), forState: .Normal)
-
-        }
-        else if sender == star2 {
-            star1.setImage(UIImage(named: "star_pink"), forState: .Normal)
-            star2.setImage(UIImage(named: "star_pink"), forState: .Normal)
-            star3.setImage(UIImage(named: "star_black"), forState: .Normal)
-            star4.setImage(UIImage(named: "star_black"), forState: .Normal)
-            star5.setImage(UIImage(named: "star_black"), forState: .Normal)
-
-        }
-        else if sender == star3 {
-            star1.setImage(UIImage(named: "star_pink"), forState: .Normal)
-            star2.setImage(UIImage(named: "star_pink"), forState: .Normal)
-            star3.setImage(UIImage(named: "star_pink"), forState: .Normal)
-            star4.setImage(UIImage(named: "star_black"), forState: .Normal)
-            star5.setImage(UIImage(named: "star_black"), forState: .Normal)
-
-        }
-        else if sender == star4 {
-            star1.setImage(UIImage(named: "star_pink"), forState: .Normal)
-            star2.setImage(UIImage(named: "star_pink"), forState: .Normal)
-            star3.setImage(UIImage(named: "star_pink"), forState: .Normal)
-            star4.setImage(UIImage(named: "star_pink"), forState: .Normal)
-            star5.setImage(UIImage(named: "star_black"), forState: .Normal)
-
-        }
-        else if sender == star5 {
-            star1.setImage(UIImage(named: "star_pink"), forState: .Normal)
-            star2.setImage(UIImage(named: "star_pink"), forState: .Normal)
-            star3.setImage(UIImage(named: "star_pink"), forState: .Normal)
-            star4.setImage(UIImage(named: "star_pink"), forState: .Normal)
-            star5.setImage(UIImage(named: "star_pink"), forState: .Normal)
-        }
-    }
-    
-    
-    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

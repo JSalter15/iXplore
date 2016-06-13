@@ -39,7 +39,6 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.registerNib(UINib(nibName: "SpotTableViewCell", bundle: nil), forCellReuseIdentifier: "SpotTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
-
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,28 +58,35 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let place = placeList![indexPath.row]
         
-        if (place.ratable) {
-            let cell = tableView.dequeueReusableCellWithIdentifier("SpotTableViewCell") as! SpotTableViewCell
-            cell.label.text = place.title
-            cell.cellImage.imageFromUrl(place.logoURL!)
-            return cell
-        }
-        else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("SpotTableViewCell") as! SpotTableViewCell
-            cell.textLabel?.text = place.title
-            cell.cellImage.imageFromUrl(place.logoURL!)
-            return cell
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("SpotTableViewCell") as! SpotTableViewCell
+        cell.titleLabel.text = place.title
+        cell.cellImage.imageFromUrl(place.logoURL!)
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale.currentLocale()
+        dateFormatter.dateFormat = "MM/dd/yyyy, HH:mm a"
+        let convertedDate:String = dateFormatter.stringFromDate(place.date)
+        cell.dateLabel.text = convertedDate
+        return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let place = placeList![indexPath.row]
+        return 88
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        if place.ratable {
-            return 88
-        }
-        else {
-            return 44
+        if editingStyle == .Delete {
+            
+            // remove the item from the data model
+            placeList?.removeAtIndex(indexPath.row)
+            
+            // delete the table view row
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
     
