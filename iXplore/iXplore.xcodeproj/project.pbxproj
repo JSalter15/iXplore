@@ -18,6 +18,14 @@
 		327805611D0848D500CE070F /* MapTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3278055F1D0848D500CE070F /* MapTableViewController.xib */; };
 		32DEE9BB1D0F15B9009FF893 /* redPin.png in Resources */ = {isa = PBXBuildFile; fileRef = 32DEE9B91D0F15B9009FF893 /* redPin.png */; };
 		32DEE9BE1D0F1620009FF893 /* yellowPin.png in Resources */ = {isa = PBXBuildFile; fileRef = 32DEE9BD1D0F1620009FF893 /* yellowPin.png */; };
+		32DEE9C01D0F43BE009FF893 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEE9BF1D0F43BE009FF893 /* UserController.swift */; };
+		32DEE9C51D0F4533009FF893 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEE9C31D0F4533009FF893 /* LoginViewController.swift */; };
+		32DEE9C61D0F4533009FF893 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32DEE9C41D0F4533009FF893 /* LoginViewController.xib */; };
+		32DEE9C91D0F459D009FF893 /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEE9C71D0F459D009FF893 /* LandingScreenViewController.swift */; };
+		32DEE9CA1D0F459D009FF893 /* LandingScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32DEE9C81D0F459D009FF893 /* LandingScreenViewController.xib */; };
+		32DEE9CD1D0F45AF009FF893 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEE9CB1D0F45AF009FF893 /* RegisterViewController.swift */; };
+		32DEE9CE1D0F45AF009FF893 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32DEE9CC1D0F45AF009FF893 /* RegisterViewController.xib */; };
+		32DEE9D01D0F4731009FF893 /* EmailValidatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEE9CF1D0F4731009FF893 /* EmailValidatedTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +42,14 @@
 		3278055F1D0848D500CE070F /* MapTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapTableViewController.xib; sourceTree = "<group>"; };
 		32DEE9B91D0F15B9009FF893 /* redPin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redPin.png; sourceTree = "<group>"; };
 		32DEE9BD1D0F1620009FF893 /* yellowPin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowPin.png; sourceTree = "<group>"; };
+		32DEE9BF1D0F43BE009FF893 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		32DEE9C31D0F4533009FF893 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		32DEE9C41D0F4533009FF893 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		32DEE9C71D0F459D009FF893 /* LandingScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
+		32DEE9C81D0F459D009FF893 /* LandingScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LandingScreenViewController.xib; sourceTree = "<group>"; };
+		32DEE9CB1D0F45AF009FF893 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		32DEE9CC1D0F45AF009FF893 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		32DEE9CF1D0F4731009FF893 /* EmailValidatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailValidatedTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,11 +82,12 @@
 		3278053C1D08256800CE070F /* iXplore */ = {
 			isa = PBXGroup;
 			children = (
-				32DEE9B81D0F15AF009FF893 /* Images */,
-				327805621D084D6000CE070F /* Models */,
-				327805631D084D6E00CE070F /* Views */,
-				327805591D0837D700CE070F /* Images */,
 				3278053D1D08256800CE070F /* AppDelegate.swift */,
+				327805621D084D6000CE070F /* Models */,
+				32DEE9C21D0F4511009FF893 /* OnboardingScreens */,
+				327805631D084D6E00CE070F /* MapView */,
+				32DEE9C11D0F44AC009FF893 /* CustomTableViewCell */,
+				327805591D0837D700CE070F /* Images */,
 				327805441D08256800CE070F /* Assets.xcassets */,
 				327805491D08256800CE070F /* Info.plist */,
 				327805461D08256800CE070F /* LaunchScreen.storyboard */,
@@ -83,6 +100,8 @@
 			children = (
 				3278055A1D08384000CE070F /* star_pink.png */,
 				3278055C1D08384800CE070F /* star_black.png */,
+				32DEE9B91D0F15B9009FF893 /* redPin.png */,
+				32DEE9BD1D0F1620009FF893 /* yellowPin.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -91,27 +110,40 @@
 			isa = PBXGroup;
 			children = (
 				3278054F1D08259A00CE070F /* Place.swift */,
+				32DEE9BF1D0F43BE009FF893 /* UserController.swift */,
+				32DEE9CF1D0F4731009FF893 /* EmailValidatedTextField.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
 		};
-		327805631D084D6E00CE070F /* Views */ = {
+		327805631D084D6E00CE070F /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				327805551D0837CF00CE070F /* SpotTableViewCell.swift */,
 				3278055E1D0848D500CE070F /* MapTableViewController.swift */,
 				3278055F1D0848D500CE070F /* MapTableViewController.xib */,
 			);
-			name = Views;
+			name = MapView;
 			sourceTree = "<group>";
 		};
-		32DEE9B81D0F15AF009FF893 /* Images */ = {
+		32DEE9C11D0F44AC009FF893 /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				32DEE9B91D0F15B9009FF893 /* redPin.png */,
-				32DEE9BD1D0F1620009FF893 /* yellowPin.png */,
+				327805551D0837CF00CE070F /* SpotTableViewCell.swift */,
 			);
-			name = Images;
+			name = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		32DEE9C21D0F4511009FF893 /* OnboardingScreens */ = {
+			isa = PBXGroup;
+			children = (
+				32DEE9C71D0F459D009FF893 /* LandingScreenViewController.swift */,
+				32DEE9C81D0F459D009FF893 /* LandingScreenViewController.xib */,
+				32DEE9CB1D0F45AF009FF893 /* RegisterViewController.swift */,
+				32DEE9CC1D0F45AF009FF893 /* RegisterViewController.xib */,
+				32DEE9C31D0F4533009FF893 /* LoginViewController.swift */,
+				32DEE9C41D0F4533009FF893 /* LoginViewController.xib */,
+			);
+			name = OnboardingScreens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +204,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32DEE9C61D0F4533009FF893 /* LoginViewController.xib in Resources */,
+				32DEE9CE1D0F45AF009FF893 /* RegisterViewController.xib in Resources */,
+				32DEE9CA1D0F459D009FF893 /* LandingScreenViewController.xib in Resources */,
 				327805481D08256800CE070F /* LaunchScreen.storyboard in Resources */,
 				327805611D0848D500CE070F /* MapTableViewController.xib in Resources */,
 				327805451D08256800CE070F /* Assets.xcassets in Resources */,
@@ -189,9 +224,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32DEE9C51D0F4533009FF893 /* LoginViewController.swift in Sources */,
 				327805501D08259A00CE070F /* Place.swift in Sources */,
+				32DEE9C91D0F459D009FF893 /* LandingScreenViewController.swift in Sources */,
+				32DEE9CD1D0F45AF009FF893 /* RegisterViewController.swift in Sources */,
 				3278053E1D08256800CE070F /* AppDelegate.swift in Sources */,
+				32DEE9C01D0F43BE009FF893 /* UserController.swift in Sources */,
 				327805601D0848D500CE070F /* MapTableViewController.swift in Sources */,
+				32DEE9D01D0F4731009FF893 /* EmailValidatedTextField.swift in Sources */,
 				327805571D0837CF00CE070F /* SpotTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

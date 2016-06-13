@@ -12,22 +12,36 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var onboardingNavigationController:UINavigationController?
     var mapTableNavigationController:UINavigationController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let onboardingViewController = LandingScreenViewController(nibName: "LandingScreenViewController", bundle: nil)
+        onboardingNavigationController = UINavigationController(rootViewController: onboardingViewController)
         
         let mapTableViewController = MapTableViewController(nibName: "MapTableViewController", bundle: nil)
         mapTableNavigationController = UINavigationController(rootViewController: mapTableViewController)
         mapTableNavigationController?.navigationBarHidden = true
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = self.mapTableNavigationController
+        self.window?.rootViewController = self.onboardingNavigationController
         self.window?.makeKeyAndVisible()
 
         return true
     }
 
+    func navigateToMapTableView() {
+        self.window?.rootViewController = self.mapTableNavigationController
+        mapTableNavigationController?.navigationBarHidden = true
+    }
+    
+    func navigateToOnboardingView() {
+        self.window?.rootViewController = self.onboardingNavigationController
+        mapTableNavigationController?.navigationBarHidden = false
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

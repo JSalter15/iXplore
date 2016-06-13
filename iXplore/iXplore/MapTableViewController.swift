@@ -23,17 +23,29 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.placeList = Place.placeList()
         
+        let button = UIButton(frame: CGRectMake(15, 20, 100, 25))
+        button.backgroundColor = UIColor.blackColor()
+        
+        button.setTitle("Log Out", forState: .Normal)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 4
+        button.addTarget(self, action: #selector(logoutTapped), forControlEvents: .TouchUpInside)
+        self.view.addSubview(button)
+        
         setupMapView()
         setupTableView()
+    }
+    
+    func logoutTapped(sender:UIButton) {
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.navigateToOnboardingView()
     }
     
     func setupMapView() {
         mapView.mapType = .HybridFlyover
         mapView.delegate = self
         
-        for place in placeList! {
-            mapView.addAnnotation(place)
-        }
+        mapView.addAnnotations(placeList!)
     }
     
     func setupTableView () {
@@ -60,14 +72,18 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         let place = placeList![indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier("spotTableViewCell") as! SpotTableViewCell
+        
+        // Set cell title and image
         cell.titleLabel.text = place.title
         cell.cellImage.imageFromUrl(place.logoURL!)
         
+        // Set cell date
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale.currentLocale()
         dateFormatter.dateFormat = "MM/dd/yyyy, HH:mm a"
         let convertedDate:String = dateFormatter.stringFromDate(place.date)
         cell.dateLabel.text = convertedDate
+        
         return cell
     }
     
@@ -81,6 +97,7 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
+        // Delete action
         let delete = UITableViewRowAction(style: .Normal, title: "Delete") { action, index in
             print("Delete tapped")
             
@@ -94,12 +111,21 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         }
         delete.backgroundColor = UIColor.redColor()
         
-        let favorite = UITableViewRowAction(style: .Normal, title: "Favorite") { action, index in
+        // Favorite or unfavorite action
+        var favorite = UITableViewRowAction()
+        if !placeList![indexPath.row].favorite {
+            favorite = UITableViewRowAction(style: .Normal, title: "Favorite") { action, index in
             print("Favorite tapped")
+                
             self.placeList![indexPath.row].favorite = true
-            
-            self.setupMapView()
-            //self.mapView(self.mapView, viewForAnnotation: self.placeList![indexPath.row])
+            self.mapView(self.mapView, viewForAnnotation: self.placeList![indexPath.row])
+            }
+        }
+        else {
+            favorite = UITableViewRowAction(style: .Normal, title: "Un-favorite") { action, index in
+                print("Un-avorite tapped")
+                self.placeList![indexPath.row].favorite = false
+            }
         }
         favorite.backgroundColor = UIColor.orangeColor()
         
@@ -110,7 +136,6 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         let anView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
-        //let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
 
         let place: Place = annotation as! Place
         var pinImage:String
@@ -122,12 +147,13 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         let pin = UIImage(named: pinImage)
-        let size = CGSize(width: 25, height: 35)
+        let size = CGSize(width: 21.91919191, height: 35)
         UIGraphicsBeginImageContext(size)
         pin!.drawInRect(CGRectMake(0, 0, size.width, size.height))
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         anView.image = resizedImage
+        anView.canShowCallout = true
         
         return anView
     }

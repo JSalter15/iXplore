@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="iXplore" customModuleProvider="target">
+            <connections>
+                <outlet property="emailField" destination="fsb-bb-Y6c" id="hkz-Wq-DcO"/>
+                <outlet property="passwordField" destination="lay-Hh-564" id="uU4-gM-3Fl"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zwg-wd-aLr">
+                    <rect key="frame" x="279" y="66" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fsb-bb-Y6c" customClass="EmailValidatedTextField" customModule="iXplore" customModuleProvider="target">
+                    <rect key="frame" x="21" y="104" width="559" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lay-Hh-564">
+                    <rect key="frame" x="21" y="149" width="559" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vxe-Lb-xXn">
+                    <rect key="frame" x="281" y="215" width="38" height="30"/>
+                    <state key="normal" title="Login"/>
+                    <connections>
+                        <action selector="loginTapped:" destination="-1" eventType="touchUpInside" id="TQg-1j-YnN"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Zwg-wd-aLr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="66" id="79d-2s-9US"/>
+                <constraint firstItem="Vxe-Lb-xXn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="BSj-bX-1pB"/>
+                <constraint firstItem="lay-Hh-564" firstAttribute="top" secondItem="fsb-bb-Y6c" secondAttribute="bottom" constant="15" id="Ov6-YR-0jh"/>
+                <constraint firstItem="Vxe-Lb-xXn" firstAttribute="top" secondItem="lay-Hh-564" secondAttribute="bottom" constant="36" id="ZAG-wX-Au1"/>
+                <constraint firstAttribute="trailing" secondItem="lay-Hh-564" secondAttribute="trailing" constant="20" id="eSw-uC-bNs"/>
+                <constraint firstAttribute="trailing" secondItem="fsb-bb-Y6c" secondAttribute="trailing" constant="20" id="eYt-Fg-eSc"/>
+                <constraint firstItem="fsb-bb-Y6c" firstAttribute="top" secondItem="Zwg-wd-aLr" secondAttribute="bottom" constant="17" id="kHs-oB-l8C"/>
+                <constraint firstItem="fsb-bb-Y6c" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="21" id="ujO-dC-AUg"/>
+                <constraint firstItem="lay-Hh-564" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="21" id="zvi-xt-vJp"/>
+                <constraint firstItem="Zwg-wd-aLr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zyH-S3-8DV"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
