@@ -55,6 +55,7 @@ class UserController {
         let user = User(email: email, password: password)
 
         if getLoggedInUser(user) {
+            logged_in_user = user
             return (user, nil)
         }
         

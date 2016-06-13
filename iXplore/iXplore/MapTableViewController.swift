@@ -84,6 +84,10 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         let convertedDate:String = dateFormatter.stringFromDate(place.date)
         cell.dateLabel.text = convertedDate
         
+        if place.favorite {
+            cell.star.image = UIImage(named: "yellowStar.png")
+        }
+        
         return cell
     }
     
@@ -115,22 +119,29 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         var favorite = UITableViewRowAction()
         if !placeList![indexPath.row].favorite {
             favorite = UITableViewRowAction(style: .Normal, title: "Favorite") { action, index in
-            print("Favorite tapped")
+                print("Favorite tapped")
                 
-            self.placeList![indexPath.row].favorite = true
-            self.mapView(self.mapView, viewForAnnotation: self.placeList![indexPath.row])
+                self.placeList![indexPath.row].favorite = true
+                self.updateAnnotation(self.placeList![indexPath.row])
             }
         }
-        else {
+        else if placeList![indexPath.row].favorite {
             favorite = UITableViewRowAction(style: .Normal, title: "Un-favorite") { action, index in
-                print("Un-avorite tapped")
+                print("Un-favorite tapped")
+                
                 self.placeList![indexPath.row].favorite = false
+                self.updateAnnotation(self.placeList![indexPath.row])
             }
         }
         favorite.backgroundColor = UIColor.orangeColor()
-        
+
         
         return [favorite, delete]
+    }
+    
+    func updateAnnotation(annotation:MKAnnotation) {
+        mapView.removeAnnotation(annotation)
+        mapView.addAnnotation(annotation)
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
@@ -148,7 +159,7 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         
         let pin = UIImage(named: pinImage)
         let size = CGSize(width: 21.91919191, height: 35)
-        UIGraphicsBeginImageContext(size)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
         pin!.drawInRect(CGRectMake(0, 0, size.width, size.height))
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
