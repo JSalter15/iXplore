@@ -12,11 +12,12 @@
 		327805481D08256800CE070F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 327805461D08256800CE070F /* LaunchScreen.storyboard */; };
 		327805501D08259A00CE070F /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3278054F1D08259A00CE070F /* Place.swift */; };
 		327805571D0837CF00CE070F /* SpotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327805551D0837CF00CE070F /* SpotTableViewCell.swift */; };
-		327805581D0837CF00CE070F /* SpotTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327805561D0837CF00CE070F /* SpotTableViewCell.xib */; };
 		3278055B1D08384000CE070F /* star_pink.png in Resources */ = {isa = PBXBuildFile; fileRef = 3278055A1D08384000CE070F /* star_pink.png */; };
 		3278055D1D08384800CE070F /* star_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 3278055C1D08384800CE070F /* star_black.png */; };
 		327805601D0848D500CE070F /* MapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3278055E1D0848D500CE070F /* MapTableViewController.swift */; };
 		327805611D0848D500CE070F /* MapTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3278055F1D0848D500CE070F /* MapTableViewController.xib */; };
+		32DEE9BB1D0F15B9009FF893 /* redPin.png in Resources */ = {isa = PBXBuildFile; fileRef = 32DEE9B91D0F15B9009FF893 /* redPin.png */; };
+		32DEE9BE1D0F1620009FF893 /* yellowPin.png in Resources */ = {isa = PBXBuildFile; fileRef = 32DEE9BD1D0F1620009FF893 /* yellowPin.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,11 +28,12 @@
 		327805491D08256800CE070F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3278054F1D08259A00CE070F /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		327805551D0837CF00CE070F /* SpotTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotTableViewCell.swift; sourceTree = "<group>"; };
-		327805561D0837CF00CE070F /* SpotTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpotTableViewCell.xib; sourceTree = "<group>"; };
 		3278055A1D08384000CE070F /* star_pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_pink.png; sourceTree = "<group>"; };
 		3278055C1D08384800CE070F /* star_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_black.png; sourceTree = "<group>"; };
 		3278055E1D0848D500CE070F /* MapTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTableViewController.swift; sourceTree = "<group>"; };
 		3278055F1D0848D500CE070F /* MapTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapTableViewController.xib; sourceTree = "<group>"; };
+		32DEE9B91D0F15B9009FF893 /* redPin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redPin.png; sourceTree = "<group>"; };
+		32DEE9BD1D0F1620009FF893 /* yellowPin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowPin.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		3278053C1D08256800CE070F /* iXplore */ = {
 			isa = PBXGroup;
 			children = (
+				32DEE9B81D0F15AF009FF893 /* Images */,
 				327805621D084D6000CE070F /* Models */,
 				327805631D084D6E00CE070F /* Views */,
 				327805591D0837D700CE070F /* Images */,
@@ -96,11 +99,19 @@
 			isa = PBXGroup;
 			children = (
 				327805551D0837CF00CE070F /* SpotTableViewCell.swift */,
-				327805561D0837CF00CE070F /* SpotTableViewCell.xib */,
 				3278055E1D0848D500CE070F /* MapTableViewController.swift */,
 				3278055F1D0848D500CE070F /* MapTableViewController.xib */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		32DEE9B81D0F15AF009FF893 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				32DEE9B91D0F15B9009FF893 /* redPin.png */,
+				32DEE9BD1D0F1620009FF893 /* yellowPin.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,9 +175,10 @@
 				327805481D08256800CE070F /* LaunchScreen.storyboard in Resources */,
 				327805611D0848D500CE070F /* MapTableViewController.xib in Resources */,
 				327805451D08256800CE070F /* Assets.xcassets in Resources */,
+				32DEE9BE1D0F1620009FF893 /* yellowPin.png in Resources */,
+				32DEE9BB1D0F15B9009FF893 /* redPin.png in Resources */,
 				3278055B1D08384000CE070F /* star_pink.png in Resources */,
 				3278055D1D08384800CE070F /* star_black.png in Resources */,
-				327805581D0837CF00CE070F /* SpotTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +334,7 @@
 				3278054E1D08256800CE070F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MapTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
@@ -29,6 +29,7 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
     
     func setupMapView() {
         mapView.mapType = .HybridFlyover
+        mapView.delegate = self
         
         for place in placeList! {
             mapView.addAnnotation(place)
@@ -36,7 +37,7 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func setupTableView () {
-        self.tableView.registerNib(UINib(nibName: "SpotTableViewCell", bundle: nil), forCellReuseIdentifier: "SpotTableViewCell")
+        self.tableView.registerClass(SpotTableViewCell.self, forCellReuseIdentifier: "spotTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -58,7 +59,7 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let place = placeList![indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("SpotTableViewCell") as! SpotTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("spotTableViewCell") as! SpotTableViewCell
         cell.titleLabel.text = place.title
         cell.cellImage.imageFromUrl(place.logoURL!)
         
@@ -78,16 +79,57 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         return true
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
-        if editingStyle == .Delete {
+        let delete = UITableViewRowAction(style: .Normal, title: "Delete") { action, index in
+            print("Delete tapped")
             
+            self.mapView.removeAnnotation(self.placeList![indexPath.row])
+
             // remove the item from the data model
-            placeList?.removeAtIndex(indexPath.row)
+            self.placeList?.removeAtIndex(indexPath.row)
             
             // delete the table view row
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
+        delete.backgroundColor = UIColor.redColor()
+        
+        let favorite = UITableViewRowAction(style: .Normal, title: "Favorite") { action, index in
+            print("Favorite tapped")
+            self.placeList![indexPath.row].favorite = true
+            
+            self.setupMapView()
+            //self.mapView(self.mapView, viewForAnnotation: self.placeList![indexPath.row])
+        }
+        favorite.backgroundColor = UIColor.orangeColor()
+        
+        
+        return [favorite, delete]
+    }
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let anView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
+        //let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+
+        let place: Place = annotation as! Place
+        var pinImage:String
+        if place.favorite {
+            pinImage = "yellowPin.png"
+        }
+        else {
+            pinImage = "redPin.png"
+        }
+        
+        let pin = UIImage(named: pinImage)
+        let size = CGSize(width: 25, height: 35)
+        UIGraphicsBeginImageContext(size)
+        pin!.drawInRect(CGRectMake(0, 0, size.width, size.height))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        anView.image = resizedImage
+        
+        return anView
     }
     
     override func didReceiveMemoryWarning() {

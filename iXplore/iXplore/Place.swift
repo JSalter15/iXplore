@@ -16,6 +16,7 @@ class Place: NSObject, MKAnnotation {
     var logoURL: String?
     var descriptor: String?
     var date: NSDate = NSDate()
+    var favorite: Bool = false
     
     class func placeList() -> [Place] {
         
@@ -25,6 +26,7 @@ class Place: NSObject, MKAnnotation {
         place.title = "Workshop 17"
         place.logoURL = "https://avatars1.githubusercontent.com/u/7220596?v=3&s=200"
         place.coordinate = CLLocationCoordinate2D(latitude: -33.906764,longitude: 18.4164983)
+        place.favorite = true
         placeList.append(place)
         
         let place2 = Place()
@@ -35,10 +37,10 @@ class Place: NSObject, MKAnnotation {
 
         let place3 = Place()
         place3.title = "Chop Chop Coffee"
-        place3.logoURL = "http://cdn3.ixperience.co.za/assets/icons/interview-step-2-801f63110f89e85e38f27d39f5864a1399f256fe0684844caea2a18c4b6fbd33.svg"
+        place3.logoURL = "https://pbs.twimg.com/profile_images/723083135815192576/XTFGfEJe.jpg"
         place3.coordinate = CLLocationCoordinate2D(latitude: -33.9271879,longitude: 18.4327055)
         placeList.append(place3)
-
+        
         /*let place4 = Place()
         place3.title = "Chop Chop Coffee"
         place3.logoURL = "http://cdn3.ixperience.co.za/assets/icons/interview-step-2-801f63110f89e85e38f27d39f5864a1399f256fe0684844caea2a18c4b6fbd33.svg"
@@ -83,7 +85,6 @@ class Place: NSObject, MKAnnotation {
         
         return placeList
     }
-    
 }
 
 extension UIImageView   {
