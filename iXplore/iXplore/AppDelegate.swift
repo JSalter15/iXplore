@@ -23,10 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let mapTableViewController = MapTableViewController(nibName: "MapTableViewController", bundle: nil)
         mapTableNavigationController = UINavigationController(rootViewController: mapTableViewController)
-        mapTableNavigationController?.navigationBarHidden = true
+        mapTableNavigationController?.navigationBarHidden = false
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = self.onboardingNavigationController
+        self.window?.rootViewController = self.mapTableNavigationController
         self.window?.makeKeyAndVisible()
 
         return true

@@ -15,7 +15,7 @@ class Place: NSObject, MKAnnotation {
     var title: String?
     var logoURL: String?
     var descriptor: String?
-    var date: NSDate = NSDate()
+    var date: NSDate?
     var favorite: Bool = false
     
     class func placeList() -> [Place] {
@@ -40,48 +40,6 @@ class Place: NSObject, MKAnnotation {
         place3.logoURL = "https://pbs.twimg.com/profile_images/723083135815192576/XTFGfEJe.jpg"
         place3.coordinate = CLLocationCoordinate2D(latitude: -33.9271879,longitude: 18.4327055)
         placeList.append(place3)
-        
-        /*let place4 = Place()
-        place3.title = "Chop Chop Coffee"
-        place3.logoURL = "http://cdn3.ixperience.co.za/assets/icons/interview-step-2-801f63110f89e85e38f27d39f5864a1399f256fe0684844caea2a18c4b6fbd33.svg"
-        place3.coordinate = CLLocationCoordinate2D(latitude: -33.9271879,longitude: 18.4327055)
-        placeList.append(place4)
-        
-        let place5 = Place()
-        place3.title = "Chop Chop Coffee"
-        place3.logoURL = "http://cdn3.ixperience.co.za/assets/icons/interview-step-2-801f63110f89e85e38f27d39f5864a1399f256fe0684844caea2a18c4b6fbd33.svg"
-        place3.coordinate = CLLocationCoordinate2D(latitude: -33.9271879,longitude: 18.4327055)
-        placeList.append(place5)
-        
-        let place6 = Place()
-        place3.title = "Chop Chop Coffee"
-        place3.logoURL = "http://cdn3.ixperience.co.za/assets/icons/interview-step-2-801f63110f89e85e38f27d39f5864a1399f256fe0684844caea2a18c4b6fbd33.svg"
-        place3.coordinate = CLLocationCoordinate2D(latitude: -33.9271879,longitude: 18.4327055)
-        placeList.append(place6)
-        
-        let place7 = Place()
-        place3.title = "Chop Chop Coffee"
-        place3.logoURL = "http://cdn3.ixperience.co.za/assets/icons/interview-step-2-801f63110f89e85e38f27d39f5864a1399f256fe0684844caea2a18c4b6fbd33.svg"
-        place3.coordinate = CLLocationCoordinate2D(latitude: -33.9271879,longitude: 18.4327055)
-        placeList.append(place7)
-        
-        let place8 = Place()
-        place3.title = "Chop Chop Coffee"
-        place3.logoURL = "http://cdn3.ixperience.co.za/assets/icons/interview-step-2-801f63110f89e85e38f27d39f5864a1399f256fe0684844caea2a18c4b6fbd33.svg"
-        place3.coordinate = CLLocationCoordinate2D(latitude: -33.9271879,longitude: 18.4327055)
-        placeList.append(place8)
-        
-        let place9 = Place()
-        place3.title = "Chop Chop Coffee"
-        place3.logoURL = "http://cdn3.ixperience.co.za/assets/icons/interview-step-2-801f63110f89e85e38f27d39f5864a1399f256fe0684844caea2a18c4b6fbd33.svg"
-        place3.coordinate = CLLocationCoordinate2D(latitude: -33.9271879,longitude: 18.4327055)
-        placeList.append(place9)
-        
-        let place10 = Place()
-        place3.title = "Chop Chop Coffee"
-        place3.logoURL = "http://cdn3.ixperience.co.za/assets/icons/interview-step-2-801f63110f89e85e38f27d39f5864a1399f256fe0684844caea2a18c4b6fbd33.svg"
-        place3.coordinate = CLLocationCoordinate2D(latitude: -33.9271879,longitude: 18.4327055)
-        placeList.append(place10)*/
         
         return placeList
     }

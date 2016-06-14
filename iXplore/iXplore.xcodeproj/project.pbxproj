@@ -27,6 +27,11 @@
 		32DEE9CE1D0F45AF009FF893 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32DEE9CC1D0F45AF009FF893 /* RegisterViewController.xib */; };
 		32DEE9D01D0F4731009FF893 /* EmailValidatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEE9CF1D0F4731009FF893 /* EmailValidatedTextField.swift */; };
 		32DEE9D21D0F5CA4009FF893 /* yellowStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 32DEE9D11D0F5CA4009FF893 /* yellowStar.png */; };
+		32DEE9F51D106557009FF893 /* NewPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEE9F31D106557009FF893 /* NewPlaceViewController.swift */; };
+		32DEE9F61D106557009FF893 /* NewPlaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32DEE9F41D106557009FF893 /* NewPlaceViewController.xib */; };
+		32DEE9F81D1069C4009FF893 /* addButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 32DEE9F71D1069C4009FF893 /* addButton.png */; };
+		32DEE9FA1D106B66009FF893 /* PlacesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEE9F91D106B66009FF893 /* PlacesController.swift */; };
+		32DEE9FC1D1081D8009FF893 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEE9FB1D1081D8009FF893 /* PersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +57,11 @@
 		32DEE9CC1D0F45AF009FF893 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		32DEE9CF1D0F4731009FF893 /* EmailValidatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailValidatedTextField.swift; sourceTree = "<group>"; };
 		32DEE9D11D0F5CA4009FF893 /* yellowStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowStar.png; sourceTree = "<group>"; };
+		32DEE9F31D106557009FF893 /* NewPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPlaceViewController.swift; sourceTree = "<group>"; };
+		32DEE9F41D106557009FF893 /* NewPlaceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPlaceViewController.xib; sourceTree = "<group>"; };
+		32DEE9F71D1069C4009FF893 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addButton.png; sourceTree = "<group>"; };
+		32DEE9F91D106B66009FF893 /* PlacesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesController.swift; sourceTree = "<group>"; };
+		32DEE9FB1D1081D8009FF893 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +97,7 @@
 				3278053D1D08256800CE070F /* AppDelegate.swift */,
 				327805621D084D6000CE070F /* Models */,
 				32DEE9C21D0F4511009FF893 /* OnboardingScreens */,
-				327805631D084D6E00CE070F /* MapView */,
+				327805631D084D6E00CE070F /* MainScreens */,
 				32DEE9C11D0F44AC009FF893 /* CustomTableViewCell */,
 				327805591D0837D700CE070F /* Images */,
 				327805441D08256800CE070F /* Assets.xcassets */,
@@ -105,6 +115,7 @@
 				32DEE9B91D0F15B9009FF893 /* redPin.png */,
 				32DEE9BD1D0F1620009FF893 /* yellowPin.png */,
 				32DEE9D11D0F5CA4009FF893 /* yellowStar.png */,
+				32DEE9F71D1069C4009FF893 /* addButton.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -113,19 +124,23 @@
 			isa = PBXGroup;
 			children = (
 				3278054F1D08259A00CE070F /* Place.swift */,
+				32DEE9F91D106B66009FF893 /* PlacesController.swift */,
+				32DEE9FB1D1081D8009FF893 /* PersistenceManager.swift */,
 				32DEE9BF1D0F43BE009FF893 /* UserController.swift */,
 				32DEE9CF1D0F4731009FF893 /* EmailValidatedTextField.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
 		};
-		327805631D084D6E00CE070F /* MapView */ = {
+		327805631D084D6E00CE070F /* MainScreens */ = {
 			isa = PBXGroup;
 			children = (
 				3278055E1D0848D500CE070F /* MapTableViewController.swift */,
 				3278055F1D0848D500CE070F /* MapTableViewController.xib */,
+				32DEE9F31D106557009FF893 /* NewPlaceViewController.swift */,
+				32DEE9F41D106557009FF893 /* NewPlaceViewController.xib */,
 			);
-			name = MapView;
+			name = MainScreens;
 			sourceTree = "<group>";
 		};
 		32DEE9C11D0F44AC009FF893 /* CustomTableViewCell */ = {
@@ -207,11 +222,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32DEE9F81D1069C4009FF893 /* addButton.png in Resources */,
 				32DEE9C61D0F4533009FF893 /* LoginViewController.xib in Resources */,
 				32DEE9CE1D0F45AF009FF893 /* RegisterViewController.xib in Resources */,
 				32DEE9CA1D0F459D009FF893 /* LandingScreenViewController.xib in Resources */,
 				327805481D08256800CE070F /* LaunchScreen.storyboard in Resources */,
 				327805611D0848D500CE070F /* MapTableViewController.xib in Resources */,
+				32DEE9F61D106557009FF893 /* NewPlaceViewController.xib in Resources */,
 				327805451D08256800CE070F /* Assets.xcassets in Resources */,
 				32DEE9BE1D0F1620009FF893 /* yellowPin.png in Resources */,
 				32DEE9BB1D0F15B9009FF893 /* redPin.png in Resources */,
@@ -231,11 +248,14 @@
 				32DEE9C51D0F4533009FF893 /* LoginViewController.swift in Sources */,
 				327805501D08259A00CE070F /* Place.swift in Sources */,
 				32DEE9C91D0F459D009FF893 /* LandingScreenViewController.swift in Sources */,
+				32DEE9FC1D1081D8009FF893 /* PersistenceManager.swift in Sources */,
 				32DEE9CD1D0F45AF009FF893 /* RegisterViewController.swift in Sources */,
 				3278053E1D08256800CE070F /* AppDelegate.swift in Sources */,
 				32DEE9C01D0F43BE009FF893 /* UserController.swift in Sources */,
 				327805601D0848D500CE070F /* MapTableViewController.swift in Sources */,
+				32DEE9F51D106557009FF893 /* NewPlaceViewController.swift in Sources */,
 				32DEE9D01D0F4731009FF893 /* EmailValidatedTextField.swift in Sources */,
+				32DEE9FA1D106B66009FF893 /* PlacesController.swift in Sources */,
 				327805571D0837CF00CE070F /* SpotTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

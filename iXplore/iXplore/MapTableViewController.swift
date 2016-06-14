@@ -21,7 +21,10 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.placeList = Place.placeList()
+        self.placeList = PlacesController.sharedInstance.getPlaces()
+        
+        self.title = "Your Places"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addTapped))
         
         let button = UIButton(frame: CGRectMake(15, 20, 100, 25))
         button.backgroundColor = UIColor.blackColor()
@@ -34,6 +37,11 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         
         setupMapView()
         setupTableView()
+    }
+    
+    func addTapped() {
+        let newPlaceView = NewPlaceViewController()
+        presentViewController(newPlaceView, animated: true, completion: nil)
     }
     
     func logoutTapped(sender:UIButton) {
@@ -53,7 +61,7 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (placeList?.count)!
     }
@@ -81,11 +89,14 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale.currentLocale()
         dateFormatter.dateFormat = "MM/dd/yyyy, HH:mm a"
-        let convertedDate:String = dateFormatter.stringFromDate(place.date)
+        let convertedDate:String = dateFormatter.stringFromDate(place.date!)
         cell.dateLabel.text = convertedDate
         
         if place.favorite {
-            cell.star.image = UIImage(named: "yellowStar.png")
+            cell.star.hidden = false
+        }
+        else if !place.favorite {
+            cell.star.hidden = true
         }
         
         return cell
@@ -123,18 +134,19 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 self.placeList![indexPath.row].favorite = true
                 self.updateAnnotation(self.placeList![indexPath.row])
+                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
             }
         }
         else if placeList![indexPath.row].favorite {
-            favorite = UITableViewRowAction(style: .Normal, title: "Un-favorite") { action, index in
-                print("Un-favorite tapped")
+            favorite = UITableViewRowAction(style: .Normal, title: "Unfavorite") { action, index in
+                print("Unfavorite tapped")
                 
                 self.placeList![indexPath.row].favorite = false
                 self.updateAnnotation(self.placeList![indexPath.row])
+                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
             }
         }
         favorite.backgroundColor = UIColor.orangeColor()
-
         
         return [favorite, delete]
     }

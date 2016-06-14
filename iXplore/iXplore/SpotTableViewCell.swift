@@ -16,13 +16,14 @@ class SpotTableViewCell: UITableViewCell {
     var star: UIImageView!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: .Default, reuseIdentifier: "spotTableViewCell")
+
         cellImage = UIImageView(frame: CGRectMake(0, 0, 88, 88))
         titleLabel = UILabel(frame: CGRectMake(96, 18, 221, 27))
         dateLabel = UILabel(frame: CGRectMake(96, 46, 221, 27))
-        star = UIImageView(frame: CGRectMake(290, 18, 50, 50))
+        star = UIImageView(frame: CGRectMake(UIScreen.mainScreen().bounds.width - 50, 24, 40, 40))
+        star.image = UIImage(named: "yellowStar.png")
 
-        super.init(style: .Default, reuseIdentifier: "spotTableViewCell")
-        
         self.addSubview(cellImage)
         self.addSubview(titleLabel)
         self.addSubview(dateLabel)

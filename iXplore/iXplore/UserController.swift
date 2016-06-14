@@ -8,14 +8,29 @@
 
 import Foundation
 
-struct User {
-    var email: String
-    var password: String
+class User: NSObject, NSCoding {
+    var email: String?
+    var password: String?
     
-    init(email:String, password:String)  {
+    required init(email:String?, password:String?) {
         self.email = email
         self.password = password
     }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.email, forKey: "email")
+        aCoder.encodeObject(self.password, forKey: "password")
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        
+        let email = aDecoder.decodeObjectForKey("email") as? String
+        let password = aDecoder.decodeObjectForKey("password") as? String
+        
+        self.init(email:email, password:password)
+        
+    }
+
 }
 
 class UserController {
