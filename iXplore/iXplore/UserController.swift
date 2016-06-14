@@ -30,7 +30,6 @@ class User: NSObject, NSCoding {
         self.init(email:email, password:password)
         
     }
-
 }
 
 class UserController {

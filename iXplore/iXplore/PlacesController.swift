@@ -27,11 +27,11 @@ class PlacesController {
     func addPlace(place:Place) {
         place.date = NSDate()
         places.append(place)
-        PersistenceManager.saveNSArray(places, fileName: "places.archive")
+        PersistenceManager.saveNSArray(places, fileName: "places")
     }
     
-    func readPlacesFromMemory() -> [Place] {
-        if let placeArray = PersistenceManager.loadNSArray("places.archive") {
+    private func readPlacesFromMemory() -> [Place] {
+        if let placeArray = PersistenceManager.loadNSArray("places") {
             places = placeArray as! [Place]
         }
         return places
@@ -41,6 +41,9 @@ class PlacesController {
         if places.count == 0 {
             return readPlacesFromMemory()
         }
+        /*if places.count == 0 {
+            return Place.placeList()
+        }*/
         else {
             return places
         }

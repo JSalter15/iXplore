@@ -9,16 +9,48 @@
 import Foundation
 import MapKit
 
-class Place: NSObject, MKAnnotation {
+class Place: NSObject, MKAnnotation, NSCoding {
     
     var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
+    var latitude: Double?
+    var longitude: Double?
     var title: String?
-    var logoURL: String?
     var descriptor: String?
-    var date: NSDate?
+    var date: NSDate = NSDate()
     var favorite: Bool = false
     
-    class func placeList() -> [Place] {
+    required init(coordinate: CLLocationCoordinate2D, latitude: Double?, longitude: Double?, title: String?, descriptor: String?, date: NSDate, favorite: Bool) {
+        self.coordinate = coordinate
+        self.latitude = latitude
+        self.longitude = longitude
+        self.title = title
+        self.descriptor = descriptor
+        self.date = date
+        self.favorite = favorite
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.latitude, forKey: "latitude")
+        aCoder.encodeObject(self.longitude, forKey: "longitude")
+        aCoder.encodeObject(self.title, forKey: "title")
+        aCoder.encodeObject(self.descriptor, forKey: "descriptor")
+        aCoder.encodeObject(self.date, forKey: "date")
+        aCoder.encodeObject(self.favorite, forKey: "favorite")
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let latitude = aDecoder.decodeObjectForKey("latitude") as? CLLocationDegrees
+        let longitude = aDecoder.decodeObjectForKey("longitude") as? CLLocationDegrees
+        let title = aDecoder.decodeObjectForKey("title") as? String
+        let descriptor = aDecoder.decodeObjectForKey("descriptor") as? String
+        let date = aDecoder.decodeObjectForKey("date") as? NSDate
+        let favorite = aDecoder.decodeObjectForKey("favorite") as? Bool
+        let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+        
+        self.init(coordinate:coordinate, latitude:latitude, longitude:longitude, title:title, descriptor:descriptor, date:date!, favorite:favorite!)
+    }
+
+    /*class func placeList() -> [Place] {
         
         var placeList:[Place] = []
         
@@ -28,7 +60,7 @@ class Place: NSObject, MKAnnotation {
         place.coordinate = CLLocationCoordinate2D(latitude: -33.906764,longitude: 18.4164983)
         place.favorite = true
         placeList.append(place)
-        
+
         let place2 = Place()
         place2.title = "Truth Coffee"
         place2.logoURL = "https://robohash.org/123.png"
@@ -42,7 +74,7 @@ class Place: NSObject, MKAnnotation {
         placeList.append(place3)
         
         return placeList
-    }
+    }*/
 }
 
 extension UIImageView   {

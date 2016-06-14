@@ -39,6 +39,12 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         setupTableView()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.placeList = PlacesController.sharedInstance.getPlaces()
+        setupMapView()
+        tableView.reloadData()
+    }
+    
     func addTapped() {
         let newPlaceView = NewPlaceViewController()
         presentViewController(newPlaceView, animated: true, completion: nil)
@@ -83,19 +89,19 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         
         // Set cell title and image
         cell.titleLabel.text = place.title
-        cell.cellImage.imageFromUrl(place.logoURL!)
+        //cell.cellImage.imageFromUrl(place.logoURL!)
         
         // Set cell date
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale.currentLocale()
         dateFormatter.dateFormat = "MM/dd/yyyy, HH:mm a"
-        let convertedDate:String = dateFormatter.stringFromDate(place.date!)
+        let convertedDate:String = dateFormatter.stringFromDate(place.date)
         cell.dateLabel.text = convertedDate
         
         if place.favorite {
             cell.star.hidden = false
         }
-        else if !place.favorite {
+        else {
             cell.star.hidden = true
         }
         

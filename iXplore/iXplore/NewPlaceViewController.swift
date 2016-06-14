@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class NewPlaceViewController: UIViewController {
 
@@ -24,12 +25,18 @@ class NewPlaceViewController: UIViewController {
         self.navigationBar.topItem?.leftBarButtonItem = backButton
     }
     
-    func backAction() {
+    func backAction(sender: UIButton!) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
+    
     @IBAction func saveButtonTapped(sender: UIButton) {
+        let lat: CLLocationDegrees = Double(latitudeField.text!)!
+        let long: CLLocationDegrees = Double(longitudeField.text!)!
+        let coordinate = CLLocationCoordinate2D(latitude: lat,longitude: long)
         
+        let place:Place = Place(coordinate: coordinate, latitude: Double(latitudeField.text!)!, longitude: Double(longitudeField.text!)!, title: titleField.text, descriptor: descriptionField.text, date: NSDate(), favorite: false)
+        
+        PlacesController.sharedInstance.addPlace(place)
     }
     
     override func didReceiveMemoryWarning() {
