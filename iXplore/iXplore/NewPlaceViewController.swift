@@ -37,6 +37,14 @@ class NewPlaceViewController: UIViewController {
         let place:Place = Place(coordinate: coordinate, latitude: Double(latitudeField.text!)!, longitude: Double(longitudeField.text!)!, title: titleField.text, descriptor: descriptionField.text, date: NSDate(), favorite: false)
         
         PlacesController.sharedInstance.addPlace(place)
+        
+        let alert = UIAlertController(title: "Success!", message: "'\(titleField.text!)' has been added to Your Places.", preferredStyle: .ActionSheet)
+        let okAction = UIAlertAction(title: "Okay", style: .Default, handler: {(okAction) -> Void in
+            // go back to the main view when it's finished adding the place and it's set to okay
+            self.dismissViewControllerAnimated(true, completion: nil)
+        })
+        alert.addAction(okAction)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

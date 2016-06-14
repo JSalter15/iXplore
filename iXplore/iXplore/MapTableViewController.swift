@@ -124,6 +124,8 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
             
             self.mapView.removeAnnotation(self.placeList![indexPath.row])
 
+            PlacesController.sharedInstance.removePlace(self.placeList![indexPath.row])
+            
             // remove the item from the data model
             self.placeList?.removeAtIndex(indexPath.row)
             
@@ -138,6 +140,8 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
             favorite = UITableViewRowAction(style: .Normal, title: "Favorite") { action, index in
                 print("Favorite tapped")
                 
+                PlacesController.sharedInstance.changeFavoritePlace(self.placeList![indexPath.row])
+
                 self.placeList![indexPath.row].favorite = true
                 self.updateAnnotation(self.placeList![indexPath.row])
                 tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
@@ -147,6 +151,8 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
             favorite = UITableViewRowAction(style: .Normal, title: "Unfavorite") { action, index in
                 print("Unfavorite tapped")
                 
+                PlacesController.sharedInstance.changeFavoritePlace(self.placeList![indexPath.row])
+
                 self.placeList![indexPath.row].favorite = false
                 self.updateAnnotation(self.placeList![indexPath.row])
                 tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
