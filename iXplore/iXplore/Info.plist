@@ -28,6 +28,10 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Give yourself the ability to add your current location to Your Places!</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Give yourself the ability to add your current location to Your Places!</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

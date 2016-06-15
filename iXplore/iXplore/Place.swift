@@ -17,15 +17,17 @@ class Place: NSObject, MKAnnotation, NSCoding {
     var title: String?
     var descriptor: String?
     var date: NSDate = NSDate()
+    var image: UIImage?
     var favorite: Bool = false
     
-    required init(coordinate: CLLocationCoordinate2D, latitude: Double?, longitude: Double?, title: String?, descriptor: String?, date: NSDate, favorite: Bool) {
+    required init(coordinate: CLLocationCoordinate2D, latitude: Double?, longitude: Double?, title: String?, descriptor: String?, date: NSDate, image: UIImage?, favorite: Bool) {
         self.coordinate = coordinate
         self.latitude = latitude
         self.longitude = longitude
         self.title = title
         self.descriptor = descriptor
         self.date = date
+        self.image = image
         self.favorite = favorite
     }
     
@@ -35,6 +37,7 @@ class Place: NSObject, MKAnnotation, NSCoding {
         aCoder.encodeObject(self.title, forKey: "title")
         aCoder.encodeObject(self.descriptor, forKey: "descriptor")
         aCoder.encodeObject(self.date, forKey: "date")
+        aCoder.encodeObject(self.image, forKey: "image")
         aCoder.encodeObject(self.favorite, forKey: "favorite")
     }
     
@@ -44,10 +47,12 @@ class Place: NSObject, MKAnnotation, NSCoding {
         let title = aDecoder.decodeObjectForKey("title") as? String
         let descriptor = aDecoder.decodeObjectForKey("descriptor") as? String
         let date = aDecoder.decodeObjectForKey("date") as? NSDate
+        let image = aDecoder.decodeObjectForKey("image") as? UIImage
         let favorite = aDecoder.decodeObjectForKey("favorite") as? Bool
+        
         let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
         
-        self.init(coordinate:coordinate, latitude:latitude, longitude:longitude, title:title, descriptor:descriptor, date:date!, favorite:favorite!)
+        self.init(coordinate:coordinate, latitude:latitude, longitude:longitude, title:title, descriptor:descriptor, date:date!, image:image, favorite:favorite!)
     }
 
     /*class func placeList() -> [Place] {

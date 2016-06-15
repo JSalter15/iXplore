@@ -9,32 +9,43 @@
 import UIKit
 import MapKit
 
-class MapTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
+class MapTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
     
-    
     var placeList:[Place]?
+    
+    var locationManager:CLLocationManager?
+    var locationAllowed:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // Get places array
         self.placeList = PlacesController.sharedInstance.getPlaces()
         
+        // Set up navigation bar
         self.title = "Your Places"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addTapped))
         
+        // Set up logout button
         let button = UIButton(frame: CGRectMake(15, 20, 100, 25))
         button.backgroundColor = UIColor.blackColor()
-        
         button.setTitle("Log Out", forState: .Normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 4
         button.addTarget(self, action: #selector(logoutTapped), forControlEvents: .TouchUpInside)
         self.view.addSubview(button)
         
+        // Ask to use current location
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        locationManager = appDelegate.locationManager
+        locationManager?.delegate = self
+        locationManager?.requestWhenInUseAuthorization()
+        
+        // Set up map and table
         setupMapView()
         setupTableView()
     }
@@ -44,6 +55,40 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         setupMapView()
         tableView.reloadData()
     }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        
+        switch status {
+        case .NotDetermined:
+            locationManager!.requestAlwaysAuthorization()
+            break
+        case .AuthorizedWhenInUse:
+            locationManager!.startUpdatingLocation()
+            locationAllowed = true
+            break
+        case .AuthorizedAlways:
+            locationManager!.startUpdatingLocation()
+            locationAllowed = true
+            break
+        case .Restricted:
+            // restricted by e.g. parental controls. User can't enable Location Services
+            break
+        case .Denied:
+            // user denied your app access to Location Services, but can grant access from Settings.app
+            break
+        }
+    }
+    
+    /*func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if (!locations.isEmpty) {
+            
+            let myLocation  = locations[0]
+                        
+            print(myLocation)
+            
+            mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(myLocation.coordinate.latitude, myLocation.coordinate.longitude), MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
+        }
+    }*/
     
     func addTapped() {
         let newPlaceView = NewPlaceViewController()
@@ -56,7 +101,7 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func setupMapView() {
-        mapView.mapType = .HybridFlyover
+        mapView.mapType = .Standard
         mapView.delegate = self
         
         mapView.addAnnotations(placeList!)
@@ -89,7 +134,7 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         
         // Set cell title and image
         cell.titleLabel.text = place.title
-        //cell.cellImage.imageFromUrl(place.logoURL!)
+        cell.cellImage.image = place.image
         
         // Set cell date
         let dateFormatter = NSDateFormatter()
@@ -122,15 +167,23 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         let delete = UITableViewRowAction(style: .Normal, title: "Delete") { action, index in
             print("Delete tapped")
             
-            self.mapView.removeAnnotation(self.placeList![indexPath.row])
-
-            PlacesController.sharedInstance.removePlace(self.placeList![indexPath.row])
+            let alert = UIAlertController(title: "Place favorited!", message: "Confirm?", preferredStyle: .ActionSheet)
             
-            // remove the item from the data model
-            self.placeList?.removeAtIndex(indexPath.row)
+            let okAction = UIAlertAction(title: "Okay", style: .Default, handler: {(okAction) -> Void in
+                self.mapView.removeAnnotation(self.placeList![indexPath.row])
+                PlacesController.sharedInstance.removePlace(self.placeList![indexPath.row])
+                self.placeList?.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            })
             
-            // delete the table view row
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {action in
+                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
+            })
+            
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+            
         }
         delete.backgroundColor = UIColor.redColor()
         
@@ -140,22 +193,43 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
             favorite = UITableViewRowAction(style: .Normal, title: "Favorite") { action, index in
                 print("Favorite tapped")
                 
-                PlacesController.sharedInstance.changeFavoritePlace(self.placeList![indexPath.row])
-
-                self.placeList![indexPath.row].favorite = true
-                self.updateAnnotation(self.placeList![indexPath.row])
-                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
+                let alert = UIAlertController(title: "Place favorited!", message: "Confirm?", preferredStyle: .ActionSheet)
+                
+                let okAction = UIAlertAction(title: "Okay", style: .Default, handler: {(okAction) -> Void in
+                    PlacesController.sharedInstance.changeFavoritePlace(self.placeList![indexPath.row], favorite: true)
+                    self.placeList![indexPath.row].favorite = true
+                    self.updateAnnotation(self.placeList![indexPath.row])
+                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
+                })
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {action in
+                })
+                
+                alert.addAction(okAction)
+                alert.addAction(cancelAction)
+                self.presentViewController(alert, animated: true, completion: nil)
+                
             }
         }
         else if placeList![indexPath.row].favorite {
             favorite = UITableViewRowAction(style: .Normal, title: "Unfavorite") { action, index in
                 print("Unfavorite tapped")
                 
-                PlacesController.sharedInstance.changeFavoritePlace(self.placeList![indexPath.row])
-
-                self.placeList![indexPath.row].favorite = false
-                self.updateAnnotation(self.placeList![indexPath.row])
-                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
+                let alert = UIAlertController(title: "Place unfavorited.", message: "Are you sure?", preferredStyle: .ActionSheet)
+                
+                let okAction = UIAlertAction(title: "Okay", style: .Default, handler: {(okAction) -> Void in
+                    PlacesController.sharedInstance.changeFavoritePlace(self.placeList![indexPath.row], favorite: false)
+                    self.placeList![indexPath.row].favorite = false
+                    self.updateAnnotation(self.placeList![indexPath.row])
+                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
+                })
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {action in
+                })
+                
+                alert.addAction(okAction)
+                alert.addAction(cancelAction)
+                self.presentViewController(alert, animated: true, completion: nil)
             }
         }
         favorite.backgroundColor = UIColor.orangeColor()

@@ -32,6 +32,7 @@
 		32DEE9F81D1069C4009FF893 /* addButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 32DEE9F71D1069C4009FF893 /* addButton.png */; };
 		32DEE9FA1D106B66009FF893 /* PlacesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEE9F91D106B66009FF893 /* PlacesController.swift */; };
 		32DEE9FC1D1081D8009FF893 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEE9FB1D1081D8009FF893 /* PersistenceManager.swift */; };
+		32DEEA401D11E072009FF893 /* defaultImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 32DEEA3F1D11E072009FF893 /* defaultImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		32DEE9F71D1069C4009FF893 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addButton.png; sourceTree = "<group>"; };
 		32DEE9F91D106B66009FF893 /* PlacesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesController.swift; sourceTree = "<group>"; };
 		32DEE9FB1D1081D8009FF893 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		32DEEA3F1D11E072009FF893 /* defaultImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		327805591D0837D700CE070F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				32DEEA3F1D11E072009FF893 /* defaultImage.png */,
 				3278055A1D08384000CE070F /* star_pink.png */,
 				3278055C1D08384800CE070F /* star_black.png */,
 				32DEE9B91D0F15B9009FF893 /* redPin.png */,
@@ -227,6 +230,7 @@
 				32DEE9CE1D0F45AF009FF893 /* RegisterViewController.xib in Resources */,
 				32DEE9CA1D0F459D009FF893 /* LandingScreenViewController.xib in Resources */,
 				327805481D08256800CE070F /* LaunchScreen.storyboard in Resources */,
+				32DEEA401D11E072009FF893 /* defaultImage.png in Resources */,
 				327805611D0848D500CE070F /* MapTableViewController.xib in Resources */,
 				32DEE9F61D106557009FF893 /* NewPlaceViewController.xib in Resources */,
 				327805451D08256800CE070F /* Assets.xcassets in Resources */,

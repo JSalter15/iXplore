@@ -30,22 +30,16 @@ class PlacesController {
         PersistenceManager.saveNSArray(places, fileName: "places")
     }
     
-    func changeFavoritePlace(place:Place)
+    func changeFavoritePlace(place:Place, favorite:Bool)
     {
-        //update allPlaces[]
+        //update places[]
         getPlaces()
         
         // the index is found if the title and the date are the same. That's enough to know
         if let index = places.indexOf({$0.title == place.title && $0.date == place.date}) {
-            let placeToUpdate = places[index]
             
-            if placeToUpdate.favorite {
-                placeToUpdate.favorite = false
-            }
-            else {
-                placeToUpdate.favorite = true
-            }
-            
+            places[index].favorite = favorite
+                        
             // update the array
             PersistenceManager.saveNSArray(places, fileName: "places")
         }
