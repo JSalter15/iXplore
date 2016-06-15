@@ -83,6 +83,7 @@
                     <rect key="frame" x="190" y="342" width="220" height="220"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="220" id="DRo-9V-rAx"/>
+                        <constraint firstAttribute="height" constant="220" id="bkG-gp-Zos"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CuR-zR-j9g">
@@ -100,6 +101,7 @@
                 <constraint firstItem="Hym-I4-BgD" firstAttribute="top" secondItem="CuR-zR-j9g" secondAttribute="bottom" constant="2" id="AzG-Wn-33R"/>
                 <constraint firstItem="pSI-3Z-jz8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DcZ-O8-4Vv"/>
                 <constraint firstItem="I9O-7f-yNx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="197" id="LZP-jl-SbL"/>
+                <constraint firstItem="Hym-I4-BgD" firstAttribute="top" secondItem="CuR-zR-j9g" secondAttribute="bottom" constant="2" id="NKd-cE-XcT"/>
                 <constraint firstItem="I9O-7f-yNx" firstAttribute="leading" secondItem="zGV-gF-iyd" secondAttribute="leading" id="P32-Zw-NmA"/>
                 <constraint firstItem="K0T-AF-kp3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="191" id="UWk-Tf-4JT"/>
                 <constraint firstItem="zGV-gF-iyd" firstAttribute="top" secondItem="I9O-7f-yNx" secondAttribute="bottom" constant="8" id="Ui5-lG-bbK"/>

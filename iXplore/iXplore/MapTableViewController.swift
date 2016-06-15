@@ -79,16 +79,21 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    /*func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if (!locations.isEmpty) {
-            
-            let myLocation  = locations[0]
-                        
-            print(myLocation)
-            
-            mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(myLocation.coordinate.latitude, myLocation.coordinate.longitude), MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
-        }
-    }*/
+    func setupMapView() {
+        mapView.mapType = .HybridFlyover
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+        mapView.addAnnotations(placeList!)
+    }
+    
+    func setupTableView () {
+        self.tableView.registerClass(SpotTableViewCell.self, forCellReuseIdentifier: "spotTableViewCell")
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    }
     
     func addTapped() {
         let newPlaceView = NewPlaceViewController()
@@ -98,19 +103,6 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
     func logoutTapped(sender:UIButton) {
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.navigateToOnboardingView()
-    }
-    
-    func setupMapView() {
-        mapView.mapType = .Standard
-        mapView.delegate = self
-        
-        mapView.addAnnotations(placeList!)
-    }
-    
-    func setupTableView () {
-        self.tableView.registerClass(SpotTableViewCell.self, forCellReuseIdentifier: "spotTableViewCell")
-        tableView.delegate = self
-        tableView.dataSource = self
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -244,27 +236,30 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
-        let anView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
-
-        let place: Place = annotation as! Place
-        var pinImage:String
-        if place.favorite {
-            pinImage = "yellowPin.png"
-        }
-        else {
-            pinImage = "redPin.png"
+        if let place:Place = annotation as? Place {
+            let anView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
+            
+            var pinImage:String
+            if place.favorite {
+                pinImage = "yellowPin.png"
+            }
+            else {
+                pinImage = "redPin.png"
+            }
+            
+            let pin = UIImage(named: pinImage)
+            let size = CGSize(width: 21.91919191, height: 35)
+            UIGraphicsBeginImageContextWithOptions(size, false, 0)
+            pin!.drawInRect(CGRectMake(0, 0, size.width, size.height))
+            let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            anView.image = resizedImage
+            anView.canShowCallout = true
+            
+            return anView
         }
         
-        let pin = UIImage(named: pinImage)
-        let size = CGSize(width: 21.91919191, height: 35)
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        pin!.drawInRect(CGRectMake(0, 0, size.width, size.height))
-        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        anView.image = resizedImage
-        anView.canShowCallout = true
-        
-        return anView
+        return nil
     }
     
     override func didReceiveMemoryWarning() {
