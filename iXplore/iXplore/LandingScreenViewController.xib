@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LandingScreenViewController" customModule="iXplore" customModuleProvider="target">
@@ -15,22 +16,23 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iXplore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbd-Hz-wyt">
-                    <rect key="frame" x="273.5" y="68" width="54" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OM3-YR-X9u">
-                    <rect key="frame" x="272" y="149" width="57" height="30"/>
+                    <rect key="frame" x="272" y="547" width="57" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="Register"/>
                     <connections>
                         <action selector="registerTapped:" destination="-1" eventType="touchUpInside" id="XWF-bS-61M"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2016-06-16 at 5.02.34 PM.png" translatesAutoresizingMaskIntoConstraints="NO" id="SwG-qh-XMs">
+                    <rect key="frame" x="125" y="84" width="350" height="350"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="350" id="GSk-pK-42B"/>
+                        <constraint firstAttribute="width" secondItem="SwG-qh-XMs" secondAttribute="height" multiplier="1:1" id="xol-ML-fmu"/>
+                    </constraints>
+                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcl-pP-bct">
-                    <rect key="frame" x="281" y="121" width="38" height="30"/>
+                    <rect key="frame" x="281" y="514" width="38" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="Login"/>
                     <connections>
@@ -40,13 +42,16 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Jbd-Hz-wyt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="68" id="Utb-wn-I4V"/>
-                <constraint firstItem="Zcl-pP-bct" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="eXa-VV-9Cg"/>
-                <constraint firstItem="OM3-YR-X9u" firstAttribute="centerX" secondItem="Zcl-pP-bct" secondAttribute="centerX" id="hoM-Np-LWU"/>
-                <constraint firstItem="Zcl-pP-bct" firstAttribute="top" secondItem="Jbd-Hz-wyt" secondAttribute="bottom" constant="32" id="k7w-o7-oT9"/>
-                <constraint firstItem="OM3-YR-X9u" firstAttribute="top" secondItem="Zcl-pP-bct" secondAttribute="bottom" constant="-2" id="qV7-9N-1om"/>
-                <constraint firstItem="Jbd-Hz-wyt" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="u5t-Qa-YU5"/>
+                <constraint firstItem="Zcl-pP-bct" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="KYu-5h-LT6"/>
+                <constraint firstItem="SwG-qh-XMs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="84" id="Ps1-KH-e8r"/>
+                <constraint firstItem="OM3-YR-X9u" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TMp-KP-XgU"/>
+                <constraint firstAttribute="bottom" secondItem="OM3-YR-X9u" secondAttribute="bottom" constant="23" id="fl5-5A-P6E"/>
+                <constraint firstItem="SwG-qh-XMs" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lVy-1P-fPO"/>
+                <constraint firstItem="OM3-YR-X9u" firstAttribute="top" secondItem="Zcl-pP-bct" secondAttribute="bottom" constant="3" id="vbd-Af-B0w"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="Screen Shot 2016-06-16 at 5.02.34 PM.png" width="1192" height="1182"/>
+    </resources>
 </document>

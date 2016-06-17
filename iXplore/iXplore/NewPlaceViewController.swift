@@ -101,8 +101,7 @@ class NewPlaceViewController: UIViewController, UINavigationControllerDelegate, 
                 self.dismissViewControllerAnimated(true, completion: nil)
             })
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {action in
-            })
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {action in })
             
             alert.addAction(okAction)
             alert.addAction(cancelAction)
@@ -110,10 +109,9 @@ class NewPlaceViewController: UIViewController, UINavigationControllerDelegate, 
         }
         
         else {
-            let alert = UIAlertController(title: "Woops!", message: "Please make sure the title, latitude, and longitude fields are filled.", preferredStyle: .Alert)
+            let alert = UIAlertController(title: "Woops!", message: "Please make sure the title, latitude, and longitude fields are all filled.", preferredStyle: .Alert)
             
-            let okAction = UIAlertAction(title: "Okay", style: .Default, handler: {(okAction) -> Void in
-            })
+            let okAction = UIAlertAction(title: "Okay", style: .Default, handler: {(okAction) -> Void in })
             
             alert.addAction(okAction)
             self.presentViewController(alert, animated: true, completion: nil)

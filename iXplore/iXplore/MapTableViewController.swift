@@ -29,20 +29,13 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
         // Set up navigation bar
         self.title = "Your Places"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addTapped))
-        
-        // Set up logout button
-        let button = UIButton(frame: CGRectMake(15, 20, 100, 25))
-        button.backgroundColor = UIColor.blackColor()
-        button.setTitle("Log Out", forState: .Normal)
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = 4
-        button.addTarget(self, action: #selector(logoutTapped), forControlEvents: .TouchUpInside)
-        self.view.addSubview(button)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(logoutTapped))
         
         // Ask to use current location
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         locationManager = appDelegate.locationManager
         locationManager?.delegate = self
+        locationManager!.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.requestWhenInUseAuthorization()
         
         // Set up map and table
@@ -101,6 +94,8 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func logoutTapped(sender:UIButton) {
+        UserController.sharedInstance.setLoggedInUser(nil)
+        
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.navigateToOnboardingView()
     }

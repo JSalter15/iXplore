@@ -27,23 +27,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         let mapTableViewController = MapTableViewController(nibName: "MapTableViewController", bundle: nil)
         mapTableNavigationController = UINavigationController(rootViewController: mapTableViewController)
-        mapTableNavigationController?.navigationBarHidden = false
-                
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = self.mapTableNavigationController
         self.window?.makeKeyAndVisible()
+        
+        if UserController.sharedInstance.getLoggedInUser() != nil {
+            navigateToMapTableView()
+        }
+        
+        else {
+            navigateToOnboardingView()
+        }
 
         return true
     }
 
     func navigateToMapTableView() {
         self.window?.rootViewController = self.mapTableNavigationController
-        mapTableNavigationController?.navigationBarHidden = true
     }
     
     func navigateToOnboardingView() {
         self.window?.rootViewController = self.onboardingNavigationController
-        mapTableNavigationController?.navigationBarHidden = false
     }
     
     func applicationWillResignActive(application: UIApplication) {
